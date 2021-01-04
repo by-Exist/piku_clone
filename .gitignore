@@ -1,6 +1,10 @@
+# File
 db.sqlite3
 .env
 
+# Directory
 env/
 .vscode/
 __pycache__/
+media/
+static/

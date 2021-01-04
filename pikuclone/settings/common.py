@@ -32,6 +32,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third apps
     # Local apps
+    "accountapp",
+    "profileapp",
+    "worldcupapp",
 ]
 
 MIDDLEWARE = [
@@ -76,6 +79,9 @@ DATABASES = {
 }
 
 
+AUTH_USER_MODEL = "accountapp.CustomUser"
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -112,13 +118,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# TODO: Nginx 또는 Storage 서버에서 서빙하도록 설정
+# https://docs.djangoproject.com/en/3.1/howto/static-files/deployment/#serving-static-files-from-a-cloud-service-or-cdn
+
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
+STATICFILES_DIRS = [BASE_DIR / "pikuclone" / "static"]  # static 파일 조회 경로 추가
+
 STATIC_ROOT = BASE_DIR / "staticfiles"  # collectstatic 파일 보관
-MEDIA_ROOT = BASE_DIR / "media"  # 업로드 파일 보관
-
-STATICFILES_DIRS = [BASE_DIR / "static"]  # static 파일 조회 경로 추가
-
-# TODO: volume이 아닌 CDN으로 static 파일을 제공하도록 수정
-# https://docs.djangoproject.com/en/3.1/howto/static-files/deployment/#serving-static-files-from-a-cloud-service-or-cdn
+MEDIA_ROOT = BASE_DIR / "pikuclone" / "media"  # 업로드 파일 보관
